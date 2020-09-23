@@ -71,8 +71,7 @@ class Signup extends Component {
               color="primary"
               className={classes.submit}
             >
-              {" "}
-              Submit{" "}
+              Submit
             </Button>
           </form>
         </Paper>
