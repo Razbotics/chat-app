@@ -18,6 +18,12 @@ class Login extends Component {
     };
   }
 
+  componentDidMount() {
+    firebase.auth().onAuthStateChanged(async (_usr) => {
+      if (_usr) this.props.history.push("/dashboard");
+    });
+  }
+
   handleOnSubmit = async (e) => {
     e.preventDefault();
     try {
