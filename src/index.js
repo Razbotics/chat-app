@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import Signup from "./components/signup";
 import Login from "./components/login";
 import Dashboard from "./components/dashboard";
@@ -19,6 +19,7 @@ const routing = (
       <Route path="/login" component={Login} />
       <Route path="/signup" component={Signup} />
       <Route path="/dashboard" component={Dashboard} />
+      <Redirect from="/" exact to="/login" />
     </div>
   </Router>
 );

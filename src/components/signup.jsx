@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import styles from "../styles/signup";
-import UserForm from "../common/userForm";
+import UserForm from "./common/userForm";
 import Paper from "@material-ui/core/Paper";
 import withStyles from "@material-ui/core/styles/withStyles";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -83,7 +83,7 @@ class Signup extends Component {
         <CssBaseline />
         <Paper className={classes.paper}>
           <Typography components="h1" variant="h5">
-            Sign Up!
+            Sign Up
           </Typography>
           <UserForm
             formComponensts={formComponents}

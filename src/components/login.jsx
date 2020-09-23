@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import UserForm from "../common/userForm";
+import UserForm from "./common/userForm";
 import styles from "../styles/login";
 import Paper from "@material-ui/core/Paper";
 import withStyles from "@material-ui/core/styles/withStyles";
@@ -21,7 +21,14 @@ class Login extends Component {
   handleOnSubmit = async (e) => {
     e.preventDefault();
     try {
-    } catch (ex) {}
+      await firebase
+        .auth()
+        .signInWithEmailAndPassword(this.state.email, this.state.password);
+      this.props.history.push("/dashboard");
+    } catch (ex) {
+      console.log(ex);
+      this.setState({ loginError: ex.message });
+    }
   };
 
   handleOnChange = (type, e) => {
@@ -43,7 +50,7 @@ class Login extends Component {
         id: "login-password-input",
         placeholder: "Enter Your Password",
         type: "password",
-        stateVal: "password"
+        stateVal: "password",
       },
     ];
 
@@ -52,7 +59,7 @@ class Login extends Component {
         <CssBaseline />
         <Paper className={classes.paper}>
           <Typography components="h1" variant="h5">
-            Login!
+            Login
           </Typography>
           <UserForm
             formComponensts={formComponents}
