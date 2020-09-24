@@ -34,7 +34,7 @@ class Dashboard extends Component {
   }
 
   newChatBtnClicked = () => {
-    this.setState({ newChatFormVisible: true });
+    this.setState({ newChatFormVisible: true, selectedChat: null });
   };
 
   selectChat = (chatIndex) => {
@@ -44,7 +44,7 @@ class Dashboard extends Component {
   render() {
     return (
       <div>
-        <div>Hello World From Dashboard</div>
+        <div></div>
         <Inbox
           history={this.props.history}
           newChatBtnFn={this.newChatBtnClicked}
