@@ -1,5 +1,9 @@
 import React, { Component } from "react";
 import Inbox from "./inbox";
+import styles from "../styles/dashboard";
+import { withStyles } from "@material-ui/core/styles";
+import Button from "@material-ui/core/Button";
+import ChatView from "./chatView";
 const firebase = require("firebase");
 
 class Dashboard extends Component {
@@ -13,48 +17,64 @@ class Dashboard extends Component {
     };
   }
 
-  componentDidMount() {
-    firebase.auth().onAuthStateChanged(async (_usr) => {
-      if (!_usr) this.props.history.push("/login");
-      else {
-        await firebase
-          .firestore()
-          .collection("chats")
-          .where("users", "array-contains", _usr.email)
-          .onSnapshot(async (res) => {
-            const chats = res.docs.map((_doc) => _doc.data());
-            await this.setState({
-              email: _usr.email,
-              chats: chats,
-            });
-            console.log(this.state);
-          });
+  getChats = async () => {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (!user) {
+        this.props.history.push("/login");
+        return;
       }
+      firebase
+        .firestore()
+        .collection("chats")
+        .where("users", "array-contains", user.email)
+        .onSnapshot((res) => {
+          const chats = res.docs.map((doc) => doc.data());
+          this.setState({
+            email: user.email,
+            chats: chats,
+          });
+          console.log(this.state);
+        });
     });
+  };
+
+  componentDidMount() {
+    this.getChats();
   }
+
+  componentWillUnmount() {
+    this.setState = (state, callback) => {
+      return;
+    };
+  }
+
+  signOut = () => firebase.auth().signOut();
 
   newChatBtnClicked = () => {
     this.setState({ newChatFormVisible: true, selectedChat: null });
   };
 
   selectChat = (chatIndex) => {
-    console.log("Selected a chat", chatIndex);
+    this.setState({ selectedChat: chatIndex });
   };
 
   render() {
+    const { classes } = this.props;
     return (
       <div>
-        <div></div>
         <Inbox
           history={this.props.history}
           newChatBtnFn={this.newChatBtnClicked}
           selectChatFn={this.selectChat}
-          chats={this.state.chats}
-          state={this.state}
+          inboxState={this.state}
         />
+        {this.state.newChatFormVisible ? null : <ChatView />}
+        <Button className={classes.signOutBtn} onClick={this.signOut}>
+          Sign Out
+        </Button>
       </div>
     );
   }
 }
 
-export default Dashboard;
+export default withStyles(styles)(Dashboard);
