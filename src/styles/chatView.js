@@ -7,6 +7,7 @@ const styles = (theme) => ({
     boxSizing: "border-box",
     overflowY: "scroll",
     top: "70px",
+    paddingBottom: "50px",
     width: "calc(100% - 300px)",
     position: "absolute",
   },

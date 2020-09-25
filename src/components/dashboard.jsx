@@ -4,6 +4,7 @@ import styles from "../styles/dashboard";
 import { withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import ChatView from "./chatView";
+import ChatTextBox from "./chatTextBox";
 const firebase = require("firebase");
 
 class Dashboard extends Component {
@@ -56,7 +57,6 @@ class Dashboard extends Component {
 
   selectChatClicked = (chatIndex) => {
     this.setState({ newChatFormVisible: false, selectedChatIndex: chatIndex });
-    console.log(chatIndex, this.state.selectedChatIndex);
   };
 
   render() {
@@ -69,10 +69,15 @@ class Dashboard extends Component {
           selectChatFn={this.selectChatClicked}
           dashboardState={this.state}
         />
-        <ChatView dashboardState={this.state} />
+        {this.state.newChatFormVisible ? null : (
+          <ChatView dashboardState={this.state} />
+        )}
         <Button className={classes.signOutBtn} onClick={this.signOut}>
           Sign Out
         </Button>
+        {this.state.newChatFormVisible ? null : (
+          <ChatTextBox dashboardState={this.state} />
+        )}
       </div>
     );
   }
