@@ -6,12 +6,26 @@ const styles = (theme) => ({
     marginLeft: "300px",
     boxSizing: "border-box",
     overflowY: "scroll",
-    top: "50px",
+    top: "70px",
     width: "calc(100% - 300px)",
     position: "absolute",
   },
 
   userSent: {
+    float: "right",
+    clear: "both",
+    padding: "20px",
+    boxSizing: "border-box",
+    wordWrap: "break-word",
+    marginTop: "10px",
+    backgroundColor: "#3A4691",
+    color: "white",
+    minWidth: "300px",
+    maxWidth: "500px",
+    borderRadius: "10px",
+  },
+
+  friendSent: {
     float: "left",
     clear: "both",
     padding: "20px",
@@ -20,34 +34,36 @@ const styles = (theme) => ({
     marginTop: "10px",
     backgroundColor: "#707BC4",
     color: "white",
-    width: "300px",
-    borderRadius: "10px",
-  },
-
-  friendSent: {
-    float: "right",
-    clear: "both",
-    padding: "20px",
-    boxSizing: "border-box",
-    wordWrap: "break-word",
-    marginTop: "10px",
-    backgroundColor: "#707BC4",
-    color: "white",
-    width: "300px",
+    minWidth: "300px",
+    maxWidth: "500px",
     borderRadius: "10px",
   },
 
   chatHeader: {
     width: "calc(100% - 301px)",
-    height: "50px",
+    height: "70px",
     backgroundColor: "#344195",
     position: "fixed",
     marginLeft: "301px",
+    boxSizing: "border-box",
+  },
+
+  chatUser: {
+    backgroundColor: "#344195",
+    position: "fixed",
+    marginTop: "25px",
+    marginLeft: "70px",
     fontSize: "18px",
     textAlign: "center",
     color: "white",
-    paddingTop: "10px",
     boxSizing: "border-box",
+  },
+
+  avatar: {
+    marginTop: "10px",
+    marginLeft: "10px",
+    height: "50px",
+    width: "50px",
   },
 });
 

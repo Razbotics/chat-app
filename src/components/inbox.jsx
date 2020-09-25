@@ -11,17 +11,14 @@ class Inbox extends Component {
     this.props.newChatBtnFn()
   };
 
-  selectChat = (index) => {
-    console.log("selected chat", index);
-    this.props.selectChatFn(index)
-  };
-
   render() {
     const {
       classes,
-      inboxState,
+      selectChatFn,
+      dashboardState,
     } = this.props;
 
+    const { selectedChatIndex, email, chats } = dashboardState;
     return (
       <main className={classes.root}>
         <Button
@@ -34,15 +31,15 @@ class Inbox extends Component {
           New Message
         </Button>
         <List>
-          {inboxState.chats.map((chat, index) => (
+          {chats.map((chat, index) => (
             <ChatOverview
               key={index}
               chat={chat}
               index={index}
               classes={classes}
-              email={inboxState.email}
-              selectedChatIndex={index}
-              selectChatFn={this.selectChat}
+              email={email}
+              selectedChatIndex={selectedChatIndex}
+              selectChatFn={selectChatFn}
             />
           ))}
         </List>

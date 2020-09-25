@@ -10,7 +10,7 @@ class Dashboard extends Component {
   constructor() {
     super();
     this.state = {
-      selectedChat: null,
+      selectedChatIndex: null,
       newChatFormVisible: false,
       email: null,
       chats: [],
@@ -51,11 +51,12 @@ class Dashboard extends Component {
   signOut = () => firebase.auth().signOut();
 
   newChatBtnClicked = () => {
-    this.setState({ newChatFormVisible: true, selectedChat: null });
+    this.setState({ newChatFormVisible: true, selectedChatIndex: null });
   };
 
-  selectChat = (chatIndex) => {
-    this.setState({ selectedChat: chatIndex });
+  selectChatClicked = (chatIndex) => {
+    this.setState({ newChatFormVisible: false, selectedChatIndex: chatIndex });
+    console.log(chatIndex, this.state.selectedChatIndex);
   };
 
   render() {
@@ -65,10 +66,10 @@ class Dashboard extends Component {
         <Inbox
           history={this.props.history}
           newChatBtnFn={this.newChatBtnClicked}
-          selectChatFn={this.selectChat}
-          inboxState={this.state}
+          selectChatFn={this.selectChatClicked}
+          dashboardState={this.state}
         />
-        {this.state.newChatFormVisible ? null : <ChatView />}
+        <ChatView dashboardState={this.state} />
         <Button className={classes.signOutBtn} onClick={this.signOut}>
           Sign Out
         </Button>
