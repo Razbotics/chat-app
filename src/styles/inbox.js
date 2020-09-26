@@ -1,23 +1,25 @@
 const styles = (theme) => ({
   root: {
     backgroundColor: theme.palette.background.paper,
-    height: "calc(100% - 35px)",
+    height: "calc(100% - 70px)",
     position: "absolute",
+    top: "70px",
     left: "0",
     width: "300px",
-    boxShadow: "0px 0px 2px black",
+    boxShadow: "0px 0px 1px black",
   },
   listItem: {
     cursor: "pointer",
   },
-  newChatBtn: {
-    borderRadius: "0px",
-  },
   unreadMessage: {
-    color: "red",
+    backgroundColor: "#3A4691",
+    fontSize: "15px",
+    color: "white",
     position: "absolute",
-    top: "0",
-    right: "5px",
+    height: "25px",
+    width: "25px",
+    top: "35px",
+    right: "10px",
   },
 });
 

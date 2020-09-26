@@ -53,7 +53,7 @@ const styles = (theme) => ({
     backgroundColor: "#344195",
     position: "fixed",
     marginTop: "25px",
-    marginLeft: "70px",
+    marginLeft: "85px",
     fontSize: "18px",
     textAlign: "center",
     color: "white",
@@ -62,9 +62,22 @@ const styles = (theme) => ({
 
   avatar: {
     marginTop: "10px",
-    marginLeft: "10px",
+    marginLeft: "25px",
     height: "50px",
     width: "50px",
+  },
+
+  backBtn: {
+    position: "fixed",
+    height: "70px",
+    width: "100px",
+    right: "0px",
+  },
+
+  backIcon: {
+    color: "white",
+    height: "35px",
+    width: "35px",
   },
 });
 

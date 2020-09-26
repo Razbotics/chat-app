@@ -44,9 +44,9 @@ class ChatTextBox extends React.Component {
           messages: firebase.firestore.FieldValue.arrayUnion({
             sender: email,
             message: this.state.chatText,
-            timeStamp: Date.now()
+            timeStamp: Date.now(),
           }),
-          receiverHasRead: false
+          receiverHasRead: false,
         });
       document.getElementById("chattextbox").value = "";
     } else {
