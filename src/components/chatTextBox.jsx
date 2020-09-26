@@ -61,6 +61,7 @@ class ChatTextBox extends React.Component {
       <div className={classes.chatTextBoxContainer}>
         <TextField
           id="chattextbox"
+          autoComplete="off"
           placeholder="Type your message ..."
           onKeyUp={(e) => this.userTyping(e)}
           className={classes.chatTextBox}
