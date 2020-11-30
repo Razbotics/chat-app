@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const config = {
   apiKey: process.env.REACT_APP_API_KEY,
   authDomain: "chat-app-878e3.firebaseapp.com",
